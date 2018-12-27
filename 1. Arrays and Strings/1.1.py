@@ -1,16 +1,31 @@
-word = input("unique word?: ")
+import unittest
 
-def isUnique(word):
+def unique(word):
     notunique = False
 
     diction = {}
     for i in word:
         if (i in diction):
-            print("not unique")
+            return False
             notunique = True
         else:
             diction[i] = 1
 
-    if(not notunique): print("unique")
+    if(not notunique): return True
 
-isUnique(word)
+class Test(unittest.TestCase):
+    dataT = [('abcd'), ('s4fad'), ('')]
+    dataF = [('23ds2'), ('hb 627jh=j ()')]
+
+    def test_unique(self):
+        # true check
+        for test_string in self.dataT:
+            actual = unique(test_string)
+            self.assertTrue(actual)
+        # false check
+        for test_string in self.dataF:
+            actual = unique(test_string)
+            self.assertFalse(actual)
+
+if __name__ == "__main__":
+    unittest.main()

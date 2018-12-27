@@ -60,7 +60,6 @@ class Test(unittest.TestCase):
     def test_one_away(self):
         for [test_s1, test_s2, expected] in self.data:
             actual = one_away(test_s1, test_s2)
-            print(test_s1, test_s2)
             self.assertEqual(actual, expected)
 
 if __name__ == "__main__":
