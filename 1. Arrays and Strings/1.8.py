@@ -1,7 +1,23 @@
 import unittest
 
 def zero_matrix(matrix):
-    #here
+    if matrix == []:
+        return []
+
+    zeroes1 = [False for i in range(len(matrix))]
+    zeroes2 = [False for i in range(len(matrix[0]))]
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if matrix[i][j] == 0:
+                zeroes1[i] = True
+                zeroes2[j] = True
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if zeroes1[i] or zeroes2[j]:
+                matrix[i][j] = 0
+    
+    return matrix
 
 class Test(unittest.TestCase):
     '''Test Cases'''
