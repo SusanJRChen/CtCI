@@ -2,17 +2,27 @@ import unittest
 
 def rotate_matrix(matrix):
     n = len(matrix)
-    newmatrix = n * [n * [0]]
+    m = n-1
+    newmatrix = [[0 for i in range(n)] for j in range(n)]
     for i in range(0, n):
         for j in range(0, n):
-            newmatrix[n-1-j][n-1-i] = matrix[i][j]
-    print(newmatrix)
+            newmatrix[j][m-i] = matrix[i][j]
+            
     return newmatrix
 
 class Test(unittest.TestCase):
     '''Test Cases'''
     data = [
-        ([
+        (
+            [[1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ], [[7,4,1],
+            [8,5,2],
+            [9,6,3]
+        ]),
+        (
+            [
             [1, 2, 3, 4, 5],
             [6, 7, 8, 9, 10],
             [11, 12, 13, 14, 15],
