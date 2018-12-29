@@ -16,8 +16,8 @@ class Node:
             self.next.insert(value)
     
     def print(self):
-        print(self.data)
         if self.next != None:
+            print(self.data, end=' ')
             self.next.print()
 
 def delete(node, value):
@@ -28,3 +28,23 @@ def delete(node, value):
         node.next = rest
         rest.prev = node
         return node
+
+class SingleNode:
+    def __init__(self, value):
+        self.data = value
+        self.next = None
+
+    def insertList(self, values):
+        for i in values:
+            self.insert(i)
+
+    def insert(self, value):
+        if self.next == None:
+            self.next = Node(value)
+        else:
+            self.next.insert(value)
+    
+    def print(self):
+        if self.next != None:
+            print(self.data, end=' ')
+            self.next.print()
