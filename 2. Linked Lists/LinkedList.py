@@ -16,8 +16,8 @@ class Node:
             self.next.insert(value)
     
     def print(self):
+        print(self.data, end=' ')
         if self.next != None:
-            print(self.data, end=' ')
             self.next.print()
 
 def delete(node, value):
