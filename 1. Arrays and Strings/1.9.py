@@ -1,12 +1,30 @@
 import unittest
 
 def string_rotation(string, sub):
-    #here
+    n = len(string)
+    if n != len(sub):
+        return False
+    else:
+        count = 0
+        stringa = ""
+        for i in range(n):
+            if (sub[0:i] in string):
+                stringa = sub[0:i]
+                count = i
+                if count == n:
+                    return True
+            else:
+                if (sub[count:n] in string):
+                    return True
+                else:
+                    return False
+
 
 class Test(unittest.TestCase):
     '''Test Cases'''
     data = [
         ('waterbottle', 'erbottlewat', True),
+        ('watwaterbottle', 'waterbottlewat', True),
         ('foo', 'bar', False),
         ('foo', 'foofoo', False)
     ]
