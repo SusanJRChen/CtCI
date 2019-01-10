@@ -18,23 +18,26 @@ def interset(a, b):
     while(cur != None):
         if (not potential and cur.data in diction):
             potential = True
-            node = cur
-            potNode = node
+            node = diction[cur.data]
+            potNode = node.next
         elif (potential):
-            potNode = potNode.next
-        elif (potential and cur.next != None and potNode.next != None and cur.next.data != potNode.next.data):
-            node = None
-            potNode = None
-            potential = False
+            if (potNode == None):
+                return node
+            elif (cur.data != potNode.data):
+                node = None
+                potNode = None
+                potential = False
+            elif (cur.data == potNode.data):
+                potNode = potNode.next
         cur = cur.next
 
     return node
 
 a = Node(7)
-a.insertList([1,6,7,6,1,7])
+a.insertList([5,7,6,1,7])
 a.print()
 print()
-b = Node(7)
+b = Node(3)
 b.insertList([1,6,3,6,1,7])
 b.print()
 print()
