@@ -29,8 +29,3 @@ class Stack:
     
     def isEmpty(self):
         return self.top == None
-
-a = Stack(2)
-a.push(3)
-print(a.pop().value)
-print(a.peek())
