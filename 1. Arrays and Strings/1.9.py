@@ -7,6 +7,7 @@ def string_rotation(string, sub):
     else:
         count = 0
         stringa = ""
+
         for i in range(n):
             if (sub[0:i] in string):
                 stringa = sub[0:i]
@@ -19,12 +20,11 @@ def string_rotation(string, sub):
                 else:
                     return False
 
-
 class Test(unittest.TestCase):
     '''Test Cases'''
     data = [
         ('waterbottle', 'erbottlewat', True),
-        ('watwaterbottle', 'waterbottlewat', True),
+        ('atwaterbottlew', 'waterbottlewat', True),
         ('foo', 'bar', False),
         ('foo', 'foofoo', False)
     ]
