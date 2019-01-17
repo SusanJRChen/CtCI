@@ -9,7 +9,7 @@ class Stack:
 
     def pop(self):
         if self.top == None:
-            return -1
+            return None
         temp = self.top.value
         self.top = self.top.next
         return temp
@@ -24,7 +24,7 @@ class Stack:
     
     def peek(self):
         if self.top == None:
-            return -1
+            return None
         return self.top.value
     
     def isEmpty(self):
