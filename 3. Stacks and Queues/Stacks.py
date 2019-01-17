@@ -19,8 +19,8 @@ class Stack:
             self.top = StackNode(item)
         else:
             temp = StackNode(item)
-            self.top.next = temp
-            self.top = self.top.next
+            temp.next = self.top
+            self.top = temp
     
     def peek(self):
         if self.top == None:
