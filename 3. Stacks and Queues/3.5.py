@@ -20,12 +20,17 @@ class Stack:
         if self.top == None:
             self.top = StackNode(item)
         else:
-            while (cur != None and cur.value < item):
-                prev = cur
-                cur = cur.next
-            temp = StackNode(item)
-            temp.next = cur
-            prev.next = temp
+            if item < cur.value:
+                temp = StackNode(item)
+                temp.next = self.top
+                self.top = temp
+            else:
+                while (cur != None and cur.value < item):
+                    prev = cur
+                    cur = cur.next
+                temp = StackNode(item)
+                temp.next = cur
+                prev.next = temp
     
     def peek(self):
         if self.top == None:
@@ -35,7 +40,7 @@ class Stack:
     def isEmpty(self):
         return self.top == None
 
-a = Stack(1)
+a = Stack(6)
 a.push(5)
 a.push(3)
 
