@@ -55,20 +55,56 @@ class BSTNode:
                 self.left.insert(value)
     
     def delete(self, value):
+        temp = None
         if value > self.value and self.right != None:
-            if self.right.value == value:
-                temp = self.right
-                if temp.right == None and temp.left == None:
-                    self.right = None
-                elif temp.left != None and temp.right == None:
-                    self.right = temp.left
-                elif temp.left == None and temp.right != None:
-                    self.right = temp.right
-                else:
-                    
-            else:
-                self.right.delete(value)
+            temp = self.right
+        elif value < self.value and self.left != None:
+            temp = self.left
+        if temp != None and temp.value == value:
+            if temp.right == None and temp.left == None:
+                if value > self.value: self.right = None
+                else: self.left = None
+                return True
+            elif temp.left != None and temp.right == None:
+                if value > self.value: self.right = temp.left
+                else: self.left = temp.left
+                return True
+            elif temp.left == None and temp.right != None:
+                if value > self.value: self.right = temp.right
+                else: self.left = temp.right
+                return True
+            elif temp.right != None and temp.left != None:
+                min_val = temp.min()
+                val = temp.delete(min_val)
+                self.value = min_val
+                return val
+        elif temp != None:
+            return temp.delete(value)
+        if value == self.value:
+            if (self.right != None):
+                min_val = self.right.min()
+                self.right.delete(min_val)
+                self.value = min_val
+                return True
+            elif self.left != None:
+                max_val = self.left.max()
+                self.left.delete(max_val)
+                self.value = max_val
+
+        return False
     
+    def min(self):
+        if self.left == None:
+            return self.value
+        else:
+            return self.left.min()
+    
+    def max(self):
+        if self.right == None:
+            return self.value
+        else:
+            return self.right.max()
+
     def height(self):
         if (self.right == None and self.left != None):
             return 1 + self.left.height()
@@ -105,9 +141,13 @@ class BSTNode:
         if self.left != None:
             self.left.inorder()
 
-a = BSTNode(6)
-a.insert(2)
-a.insert(5)
-a.insert(1)
-a.insert(7)
-a.insert(3)
+a = BSTNode(50)
+a.insert(30)
+a.insert(70)
+a.insert(20)
+a.insert(40)
+a.insert(60)
+a.insert(80)
+print(a.delete(20))
+print(a.delete(70))
+a.inorder()
