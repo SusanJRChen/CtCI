@@ -41,12 +41,16 @@ int seed(int n) {
         len = length(n);
         int m = power(10, length(n) - 1) * MSB(n);
         n -= m;
-        if (counters[msb-1] == 0) order[counter++]++;
+        if (counters[msb-1] == 0) {
+            order[counter] = msb;
+            counter++;
+        }
+            
         counters[msb-1]++;
     }
     for (int i = 0; i < counter; i++) {
-        int j = order[i];
-        if (counters[j]!= 0) {
+        int j = order[i] - 1;
+        if (counters[j] != 0) {
             result *= 10;
             result += counters[j];
             result *= 10;
@@ -58,7 +62,7 @@ int seed(int n) {
 
 int main() {
     int  n = 1;
-
+    // seed(1221);
     for (int i = 0; i < 5; i++) {
         n = seed(n);
         print(n);
