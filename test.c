@@ -33,20 +33,24 @@ int seed(int n) {
     int result = 0;
     int counters[9] = {0};
     int len = length(n);
-    int order[len] = {0};
+    int order[20] = {0};
+    int counter = 0;
+
     while (n > 0) {
         int msb = MSB(n);
         len = length(n);
         int m = power(10, length(n) - 1) * MSB(n);
         n -= m;
+        if (counters[msb-1] == 0) order[counter++]++;
         counters[msb-1]++;
     }
-    for (int i =0; i <9; i++) {
-        if (counters[i]!= 0) {
+    for (int i = 0; i < counter; i++) {
+        int j = order[i];
+        if (counters[j]!= 0) {
             result *= 10;
-            result += counters[i];
+            result += counters[j];
             result *= 10;
-            result += i + 1;
+            result += j + 1;
         }
     }
     return result;
