@@ -26,12 +26,12 @@ void print(int * arr, int n){
     for (int i = 0; i < n; i++) {
         cout<< arr[i] << " ";
     }
+    cout << endl;
 }
 
 int main() {
     int arr[] = {10, 8, 7, 4,19, 30};
     quickSort(arr, 0, 5);
     print(arr, 6);
-    cout << endl;
     return 1;
 }
